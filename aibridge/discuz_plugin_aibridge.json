@@ -1,0 +1,151 @@
+{
+  "Title": "Discuz! Plugin",
+  "Version": "X5.0",
+  "Time": "2026-06-01 00:00",
+  "From": "Discuz! Board",
+  "Data": {
+    "plugin": {
+      "available": "1",
+      "adminid": "0",
+      "name": "AI 接口桥接插件",
+      "identifier": "aibridge",
+      "description": "集成多平台 AI 大模型能力，为论坛用户提供 AI 对话、内容辅助等功能",
+      "datatables": "aibridge_config,aibridge_log,aibridge_conversation,aibridge_prompt",
+      "directory": "aibridge/",
+      "copyright": "AI Bridge Team",
+      "version": "1.0.0",
+      "__modules": [
+        {
+          "name": "hook",
+          "param": "",
+          "menu": "",
+          "url": "",
+          "type": "11",
+          "adminid": "0",
+          "displayorder": "0",
+          "navtitle": "",
+          "navicon": "",
+          "navsubname": "",
+          "navsuburl": ""
+        },
+        {
+          "name": "hook",
+          "param": "",
+          "menu": "",
+          "url": "",
+          "type": "28",
+          "adminid": "0",
+          "displayorder": "0",
+          "navtitle": "",
+          "navicon": "",
+          "navsubname": "",
+          "navsuburl": ""
+        },
+        {
+          "name": "hook",
+          "param": "",
+          "menu": "",
+          "url": "",
+          "type": "12",
+          "adminid": "0",
+          "displayorder": "0",
+          "navtitle": "",
+          "navicon": "",
+          "navsubname": "",
+          "navsuburl": ""
+        },
+        {
+          "name": "admin",
+          "param": "",
+          "menu": "AI桥接管理",
+          "url": "",
+          "type": "3",
+          "adminid": "0",
+          "displayorder": "0",
+          "navtitle": "",
+          "navicon": "",
+          "navsubname": "",
+          "navsuburl": ""
+        },
+        {
+          "name": "restful",
+          "param": "",
+          "menu": "",
+          "url": "aibridge",
+          "type": "9",
+          "adminid": "0",
+          "displayorder": "0",
+          "navtitle": "",
+          "navicon": "",
+          "navsubname": "",
+          "navsuburl": ""
+        }
+      ]
+    },
+    "version": "X5.0",
+    "var": [
+      {
+        "displayorder": 0,
+        "title": "允许使用的用户组",
+        "description": "选择哪些用户组可以使用 AI 功能",
+        "variable": "allowed_groups",
+        "type": "groups",
+        "value": "",
+        "extra": ""
+      },
+      {
+        "displayorder": 1,
+        "title": "每日最大请求次数",
+        "description": "每个用户每天最多可调用 AI 的次数，0 表示不限制",
+        "variable": "daily_limit",
+        "type": "text",
+        "value": "50",
+        "extra": ""
+      },
+      {
+        "displayorder": 2,
+        "title": "单次最大 Token 数",
+        "description": "每次请求允许的最大 Token 数量",
+        "variable": "max_tokens",
+        "type": "text",
+        "value": "4096",
+        "extra": ""
+      },
+      {
+        "displayorder": 3,
+        "title": "默认 AI 平台",
+        "description": "前台用户默认使用的 AI 平台（需先在后台启用对应平台）",
+        "variable": "default_platform",
+        "type": "text",
+        "value": "openai",
+        "extra": ""
+      },
+      {
+        "displayorder": 4,
+        "title": "默认模型",
+        "description": "覆盖平台配置中的默认模型（留空则使用平台配置中的模型）",
+        "variable": "default_model",
+        "type": "text",
+        "value": "",
+        "extra": ""
+      },
+      {
+        "displayorder": 5,
+        "title": "启用流式输出",
+        "description": "是否启用 AI 回复的流式输出（SSE）",
+        "variable": "enable_stream",
+        "type": "radio",
+        "value": "1",
+        "extra": ""
+      }
+    ],
+    "license": "MIT",
+    "intro": "AI 接口桥接插件，支持 OpenAI、百度文心、阿里通义、讯飞星火、腾讯混元、DeepSeek、Claude 等多平台大模型接入。",
+    "installfile": "install.php",
+    "uninstallfile": "uninstall.php",
+    "upgradefile": "upgrade.php",
+    "checkfile": "check.php",
+    "enablefile": "enable.php",
+    "disablefile": "disable.php"
+  }
+}
