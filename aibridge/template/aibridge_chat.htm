@@ -1,0 +1,74 @@
+<!-- AI Bridge 对话悬浮窗备用模板（供直接 include 使用）
+     注意：本模板已由 hook.class.php 的 render_chat_widget() 方法动态生成替代。
+     如需手动调用，请确保 $platform_options_html 和 $prompt_options_html 变量已赋值。
+-->
+<div id="aibridge-widget" class="aibridge-widget">
+    <!-- 悬浮按钮 -->
+    <div id="aibridge-fab" class="aibridge-fab" onclick="aibridgeToggle()" title="AI 助手">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span class="aibridge-fab-label">AI</span>
+    </div>
+
+    <!-- 对话面板 -->
+    <div id="aibridge-panel" class="aibridge-panel" style="display:none;">
+        <!-- 头部 -->
+        <div class="aibridge-header">
+            <div class="aibridge-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                AI 助手
+            </div>
+            <div class="aibridge-header-actions">
+                <!-- 平台选择 -->
+                <select id="aibridge-platform-select" class="aibridge-select" title="选择AI平台">
+                    <!--{loop $platforms $pid $p}-->
+                    <option value="{$pid}">{$p['name']}</option>
+                    <!--{/loop}-->
+                </select>
+                <!-- Prompt 模式选择 -->
+                <select id="aibridge-prompt-select" class="aibridge-select" title="选择对话模式">
+                    <option value="0">默认对话</option>
+                    <!--{loop $prompts $p}-->
+                    <option value="{$p['id']}">{$p['name']}</option>
+                    <!--{/loop}-->
+                </select>
+                <!-- 清空对话 -->
+                <button type="button" class="aibridge-btn-icon" onclick="aibridgeClear()" title="清空对话">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                    </svg>
+                </button>
+                <!-- 关闭 -->
+                <button type="button" class="aibridge-btn-icon" onclick="aibridgeToggle()" title="关闭">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 消息区域 -->
+        <div id="aibridge-messages" class="aibridge-messages">
+            <div class="aibridge-welcome">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.35;margin-bottom:8px;display:block;margin-left:auto;margin-right:auto;">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <p>您好！我是 AI 助手，有什么可以帮您的吗？</p>
+                <p style="font-size:11px;opacity:0.7;">按 Enter 发送，Shift+Enter 换行</p>
+            </div>
+        </div>
+
+        <!-- 输入区域 -->
+        <div class="aibridge-input-area">
+            <textarea id="aibridge-input" class="aibridge-input" placeholder="输入您的问题..." rows="1" onkeydown="aibridgeKeyDown(event)"></textarea>
+            <button type="button" id="aibridge-send" class="aibridge-send-btn" onclick="aibridgeSend()" title="发送">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
