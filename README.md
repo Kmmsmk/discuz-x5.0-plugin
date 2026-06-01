@@ -1,0 +1,1 @@
+# discuz-x5.0-plugin
